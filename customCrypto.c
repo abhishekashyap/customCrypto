@@ -2,31 +2,6 @@
 #include <string.h>
 #include "cryptoFunctions.c"
 
-void openFile(const char *filename)
-{
-    FILE *fp;
-    fp = fopen(filename, "r+");
-
-    if (fp == NULL)
-    {
-        printf("File does not exist / unable to open file\n");
-    }
-    else
-    {
-        printf("File found\n");
-
-        char dataToBeRead[50];
-        // using fgets() method
-        while (fgets(dataToBeRead, 50, fp) != NULL)
-        {
-            // Print the dataToBeRead
-            printf("%s", dataToBeRead);
-        }
-
-        fclose(fp);
-    }
-}
-
 int main(int argc, char const *argv[])
 {
     printf("You have entered %d arguments\n", argc);

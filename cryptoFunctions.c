@@ -63,18 +63,16 @@ int encrypt(const char *filename)
                         outChar = (outChar - 32) + 144;
                     }
                   
-                    
-                    
+                    char dataToBeWritten[2]; // String to store hex value
+                    sprintf(dataToBeWritten, "%02X", outChar); // Putting hex value of outChar in str
 
-                    // char dataToBeWritten[] = (dataToBeRead[i] - 32) + 144;
+                    if (strlen(dataToBeWritten) > 0)
+                    {
 
-                    // if (strlen(dataToBeWritten) > 0)
-                    // {
-
-                    //     // writing in the file using fputs()
-                    //     fputs(dataToBeWritten, fileToWrite);
-                    //     fputs("\n", fileToWrite);
-                    // }
+                        // writing in the file using fputs()
+                        fputs(dataToBeWritten, fileToWrite);
+                        fputs("\n", fileToWrite);
+                    }
                 }
             }
         }
