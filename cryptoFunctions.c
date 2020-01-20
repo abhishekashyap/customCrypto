@@ -1,4 +1,5 @@
 #include "customCrypto.h"
+
 int encrypt(const char *filename)
 {
     printf("\nEntered encrypt function\n");
@@ -35,46 +36,45 @@ int encrypt(const char *filename)
                     // Replace with TT
                     // Write the dataToBeWritten into the file
                     char dataToBeWritten[] = "TT";
-                    if (strlen(dataToBeWritten) > 0)
-                    {
 
-                        // writing in the file using fputs()
-                        fputs(dataToBeWritten, fileToWrite);
-                        fputs("\n", fileToWrite);
-                    }
+                    // writing in the file using fputs()
+                    fputs(dataToBeWritten, fileToWrite);
+                    fputs("\n", fileToWrite);
                 }
+
                 else if (dataToBeRead[i] == 13)
                 {
                     // Cairrage return - ASCII value = 13
                     // Replace with <CR>
                     // Write the dataToBeWritten into the file
                     char dataToBeWritten[] = "<CR>";
-                    if (strlen(dataToBeWritten) > 0)
-                    {
 
-                        // writing in the file using fputs()
-                        fputs(dataToBeWritten, fileToWrite);
-                        fputs("\n", fileToWrite);
-                    }
+                    // writing in the file using fputs()
+                    fputs(dataToBeWritten, fileToWrite);
+                    fputs("\n", fileToWrite);
                 }
+
                 else
                 {
-                    if (dataToBeRead[i] < 32)
-                    {
-                        char dataToBeWritten = (dataToBeRead[i] - 32) + 144;
+                    char outChar = dataToBeRead[i] - 16;
 
-                        if (strlen(dataToBeWritten) > 0)
-                        {
-
-                            // writing in the file using fputs()
-                            fputs(dataToBeWritten, fileToWrite);
-                            fputs("\n", fileToWrite);
-                        }
-                    }
-                    else
+                    if (outChar < 32)
                     {
-                        printf("Baaki else baad mai");
+                        outChar = (outChar - 32) + 144;
                     }
+                  
+                    
+                    
+
+                    // char dataToBeWritten[] = (dataToBeRead[i] - 32) + 144;
+
+                    // if (strlen(dataToBeWritten) > 0)
+                    // {
+
+                    //     // writing in the file using fputs()
+                    //     fputs(dataToBeWritten, fileToWrite);
+                    //     fputs("\n", fileToWrite);
+                    // }
                 }
             }
         }
